@@ -2,13 +2,11 @@ var inspect = require('eyespect').inspector()
 var exec = require('child_process').exec
 var pattern = /spawned/;
 module.exports = function (data, cb) {
+  var hub = data.hub
+  var secret = data.secret
   var command = data.command
   var directory = data.directory // the directory to run the spawn command from
-  var cmd = '(cd ' + directory + ' && fleet spawn'
-  if (data.name) {
-    cmd += ' --name=' + data.name
-  }
-
+  var cmd = '(cd ' + directory + ' && fleet spawn --hub=' + hub + ' --secret=' + secret + ' '
   if (data.drone) {
     cmd += ' --drone=' + data.drone
   }
