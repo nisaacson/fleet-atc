@@ -1,0 +1,16 @@
+{
+  "name": "atc",
+  "version": "0.0.0",
+  "description": "Manage fleet spawns",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
