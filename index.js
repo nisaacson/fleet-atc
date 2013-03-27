@@ -1,12 +1,14 @@
 /**
  * Spawn a process
  */
+require('better-stack-traces')
 var exec = require('child_process').exec
 var rk = require('required-keys');
 var getPSText = require('./getPSText')
 var getPSJson = require('fleet-ps-json')
 var inspect = require('eyespect').inspector()
 var isCommandRunning = require('./isCommandRunning')
+var pattern = /spawned/;
 module.exports = function (data, cb) {
   var keys = ['command', 'directory']
   var err = rk.truthySync(data, keys)
@@ -21,23 +23,34 @@ module.exports = function (data, cb) {
   getPSText(function (err, text) {
     if (err) { return cb(err) }
     var json = getPSJson(text)
-    inspect(json, 'fleet json')
     var command = data.command
     var running = isCommandRunning(command, json)
+    var directory = data.directory // the directory to run the spawn command from
     if (running) {
-      inspect('command already spawned')
+      inspect(data, 'command has already been spawned so skip for now')
       return cb()
     }
-    var directory = data.directory // the directory to run the spawn command from
     var cmd = '(cd ' + directory + ' && fleet spawn -- ' + command + ')'
-    inspect(cmd, 'command')
-    var pattern = /spawned/
     exec(cmd, function (err, stdout, stderr) {
-      inspect(err, 'spawn error')
-      inspect(stderr, 'spawn stderr')
-      inspect(stdout, 'spawn stdout')
+      if (err) {
+        return cb(err)
+      }
+      console.log(stdout)
+      console.log(stderr)
       if (pattern.test(stdout)) {
-        cb()
+        return cb()
+      }
+      if (err) {
+        return cb({
+          message: 'failed to spawn command, bad output from fleet after executing fleet-spawn',
+          error: err,
+          cmd: cmd,
+          command: command,
+          stdout: stdout,
+          stderr: stderr,
+          directory: directory,
+          stack: new Error().stack
+        })
       }
     })
 

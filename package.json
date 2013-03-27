@@ -19,6 +19,11 @@
     "eyespect": "~0.1.8"
   },
   "dependencies": {
-    "fleet-ps-json": "0.0.1"
-  }
+    "fleet-ps-json": "0.0.1",
+    "better-stack-traces": "0.0.4",
+    "required-keys": "~1.0.4",
+    "should": "~1.2.2",
+    "async": "~0.2.6"
+  },
+  "bin": "spawn.js"
 }
