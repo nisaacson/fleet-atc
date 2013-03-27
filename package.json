@@ -1,6 +1,6 @@
 {
   "name": "atc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manage fleet spawns",
   "main": "index.js",
   "directories": {
@@ -14,16 +14,15 @@
   "license": "BSD",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "should": "~1.2.2",
-    "mocha": "~1.8.2",
-    "eyespect": "~0.1.8"
+    "mocha": "~1.8.2"
   },
   "dependencies": {
     "fleet-ps-json": "0.0.1",
     "better-stack-traces": "0.0.4",
     "required-keys": "~1.0.4",
     "should": "~1.2.2",
-    "async": "~0.2.6"
+    "async": "~0.2.6",
+    "eyespect": "~0.1.8"
   },
   "bin": "spawn.js"
 }
