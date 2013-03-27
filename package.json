@@ -1,6 +1,6 @@
 {
   "name": "fleet-atc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Manage fleet spawns",
   "main": "index.js",
   "directories": {

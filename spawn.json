@@ -1,6 +1,7 @@
 [
   {
     "command": "node grapes.js",
-    "directory": "test/data/repos/grapes/"
+    "directory": "test/data/repos/grapes/",
+    "deploy": true
   }
 ]

@@ -50,5 +50,24 @@ fleet-atc
 
 If any of the elements in spawn.json has already been spawned and thus appears in the output of fleet-ps, fleet-atc will ignore it and move on to the next element
 
+# Deploy
+If you wish, you can have fleet-atc deploy the lastest commit of your repo before running the spawn command. To enable deployment, set  `"deploy": true` in your spawn.json element. You can also enable deploy across all repos by passing the command line argument `--deploy=true`. Note that the individual deploy directives in spawn.json will override the command-line `--deploy` argument
+
+```javascript
+[
+  {
+    "command": "node grapeServer.js",
+    "directory": "../grapes/",
+    "deploy": true
+  },
+  {
+    "command": "node catsServer.js",
+    "directory": "../cats/",
+    "drone": "drone001"
+  },
+]
+```
+
+
 ## Todo
 Allow users to specify the max number of times a process can be spawned by including an optional `maxProcesses` field in the json element. Currently fleet-atc only allows for 1 process for a given repo directory and command

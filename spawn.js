@@ -1,8 +1,8 @@
 #! /usr/bin/env node
 var async =require('async')
 var should = require('should');
-var argv = require('optimist').argv
-var name = argv.name
+var argv = require('optimist').boolean('deploy').argv
+var deploy = argv.deploy
 var inspect = require('eyespect').inspector();
 var fs = require('fs')
 var path = require('path')
@@ -35,7 +35,9 @@ if (err) {
 async.forEach(
   json,
   function (element, cb) {
-    element.name = name
+    if (deploy && !element.hasOwnProperty('deploy')) {
+      element.deploy = deploy
+    }
     inspect(element, 'spawning now')
     performSpawn(element, cb)
   },
