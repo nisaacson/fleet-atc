@@ -37,6 +37,7 @@ module.exports = function (data, cb) {
       cmd += ' --drone=' + data.drone
     }
     cmd += '  -- ' + command + ')'
+    inspect(cmd, 'executing spawn command')
     exec(cmd, function (err, stdout, stderr) {
       if (err) {
         return cb(err)

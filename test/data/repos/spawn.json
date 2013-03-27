@@ -1,0 +1,6 @@
+[
+  {
+    "command": "node grapes.js",
+    "directory": "grapes/"
+  }
+]
