@@ -12,5 +12,13 @@
   "repository": "",
   "author": "",
   "license": "BSD",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "should": "~1.2.2",
+    "mocha": "~1.8.2",
+    "eyespect": "~0.1.8"
+  },
+  "dependencies": {
+    "fleet-ps-json": "0.0.1"
+  }
 }
