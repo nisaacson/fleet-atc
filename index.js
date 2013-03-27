@@ -1,6 +1,7 @@
 /**
  * Spawn a process
  */
+var exec = require('child_process').exec
 var rk = require('required-keys');
 var getPSText = require('./getPSText')
 var getPSJson = require('fleet-ps-json')
@@ -30,5 +31,15 @@ module.exports = function (data, cb) {
     var directory = data.directory // the directory to run the spawn command from
     var cmd = '(cd ' + directory + ' && fleet spawn -- ' + command + ')'
     inspect(cmd, 'command')
+    var pattern = /spawned/
+    exec(cmd, function (err, stdout, stderr) {
+      inspect(err, 'spawn error')
+      inspect(stderr, 'spawn stderr')
+      inspect(stdout, 'spawn stdout')
+      if (pattern.test(stdout)) {
+        cb()
+      }
+    })
+
   })
 }
