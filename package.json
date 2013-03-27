@@ -1,6 +1,6 @@
 {
   "name": "fleet-atc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manage fleet spawns",
   "main": "index.js",
   "directories": {
@@ -16,6 +16,13 @@
   "devDependencies": {
     "mocha": "~1.8.2"
   },
+  "keywords": [
+    "fleet",
+    "drone",
+    "deploy",
+    "spawn",
+    "restart"
+  ],
   "dependencies": {
     "fleet-ps-json": "0.0.1",
     "better-stack-traces": "0.0.4",
