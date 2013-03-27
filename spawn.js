@@ -2,7 +2,6 @@
 var async =require('async')
 var should = require('should');
 var inspect = require('eyespect').inspector();
-var optimist = require('optimist')
 var fs = require('fs')
 var path = require('path')
 var directory = process.cwd()
