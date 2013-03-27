@@ -1,13 +1,14 @@
 #! /usr/bin/env node
 var async =require('async')
 var should = require('should');
+var argv = require('optimist').argv
+var name = argv.name
 var inspect = require('eyespect').inspector();
 var fs = require('fs')
 var path = require('path')
 var directory = process.cwd()
 var spawnPath = path.join(directory, 'spawn.json')
-
-var spawn = require('./index')
+var performSpawn = require('./index')
 var exists = fs.existsSync(spawnPath)
 var rk = require('required-keys');
 if (!exists) {
@@ -34,8 +35,9 @@ if (err) {
 async.forEach(
   json,
   function (element, cb) {
+    element.name = name
     inspect(element, 'spawning now')
-    spawn(element, cb)
+    performSpawn(element, cb)
   },
   function (err) {
     if (err) {

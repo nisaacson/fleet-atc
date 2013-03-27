@@ -32,6 +32,9 @@ module.exports = function (data, cb) {
     }
 
     var cmd = '(cd ' + directory + ' && fleet spawn'
+    if (data.name) {
+      cmd += ' --name=' + data.name
+    }
 
     if (data.drone) {
       cmd += ' --drone=' + data.drone
