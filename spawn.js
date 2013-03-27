@@ -36,7 +36,7 @@ function load() {
 
   inspect(name,'name')
   var hubElement = getHub(name)
-  async.forEach(
+  async.forEachSeries(
     json,
     function (element, cb) {
       if (deploy && !element.hasOwnProperty('deploy')) {
