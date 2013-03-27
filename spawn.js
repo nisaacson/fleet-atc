@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 var async =require('async')
 var should = require('should');
 var inspect = require('eyespect').inspector();

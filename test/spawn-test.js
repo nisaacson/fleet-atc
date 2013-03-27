@@ -36,9 +36,8 @@ describe('Spawn new command', function () {
       command: command,
       directory: dir
     }
-    atc(data, function (err) {
-      should.exist(err)
-      err.error.should.eql('command has already been spawned and is currently running')
+    atc(data, function (err, reply) {
+      should.not.exist(err)
       done()
     })
   })
