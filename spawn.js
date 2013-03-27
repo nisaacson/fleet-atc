@@ -73,7 +73,7 @@ function validateJSON(json) {
 
 
 function getHub(name) {
-  var filePath = path.join(__dirname, 'fleet.json')
+  var filePath = path.join(process.cwd(), 'fleet.json')
   var json = JSON.parse(fs.readFileSync(filePath, 'utf8'))
   inspect(json, 'fleet json')
   var element = json.remote[name]
