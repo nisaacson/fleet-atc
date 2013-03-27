@@ -1,11 +1,13 @@
 # Fleet-ATC
-Fleet Air Traffic Controller (fleet-atc) manages processes that run on your fleet drones. fleet-atc allows you to specify and execute all your fleet spawn commands across all your repos with a single command
+Fleet Air Traffic Controller (fleet-atc) manages processes that run on your fleet drones.
+
+[fleet](https://github.com/substack/fleet) is an excellent tool to manage processes in a cluster. However respawning commands after an such as a server reboot can be difficult. fleet-atc allows you to specify and execute all your fleet spawn commands across all your repos with a single command.
 
 # Installation
 ```bash
 [sudo] npm install -g fleet-atc
 ```
-Installing globally with create a command line tool `fleet-atc`
+Installing globally will create a command line tool `fleet-atc` that you can use to manage your spawned fleet processes
 
 # Usage
 Create an empty git repo in a fresh directory. Add a *fleet.json* file with a default hub.
