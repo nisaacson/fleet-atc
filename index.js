@@ -30,7 +30,13 @@ module.exports = function (data, cb) {
       inspect(data, 'command has already been spawned so skip for now')
       return cb()
     }
-    var cmd = '(cd ' + directory + ' && fleet spawn -- ' + command + ')'
+
+    var cmd = '(cd ' + directory + ' && fleet spawn'
+
+    if (data.drone) {
+      cmd += ' --drone=' + data.drone
+    }
+    cmd += '  -- ' + command + ')'
     exec(cmd, function (err, stdout, stderr) {
       if (err) {
         return cb(err)
